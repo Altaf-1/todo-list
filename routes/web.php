@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('work.index');
 });
+
+Auth::routes(['verify' => true]);
+Route::resource('/work', 'MaggiesController',
+    ['names' =>[
+        'index'=>'work.index',
+        'create'=>'work.create',
+        'store'=>'work.store',
+        'edit'=>'work.edit',
+        'update'=>'work.update',
+        'show'=>'work.show',
+        'destroy'=>'work.destroy'
+    ]]);
+
+Route::get('/home', 'HomeController@index')->name('home');
