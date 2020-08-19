@@ -16,12 +16,12 @@ class CreateWorksTable extends Migration
         Schema::create('works', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('first_name')->index();
-            $table->string('last_name')->default(20);
-            $table->string('email')->default(20);
-            $table->integer('phone')->default(20);
-            $table->string('work')->default(20);
-            $table->string('start')->default(20);
-            $table->string('end')->default(20);
+            $table->string('last_name');
+            $table->string('email');
+            $table->bigInteger('phone');
+            $table->string('work');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
         });
     }

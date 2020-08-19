@@ -13,20 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('work.index');
-});
+Route::get('/', 'WorkController@index');
 
-Auth::routes(['verify' => true]);
-Route::resource('/work', 'MaggiesController',
-    ['names' =>[
-        'index'=>'work.index',
-        'create'=>'work.create',
-        'store'=>'work.store',
-        'edit'=>'work.edit',
-        'update'=>'work.update',
-        'show'=>'work.show',
-        'destroy'=>'work.destroy'
-    ]]);
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/work','WorkController',
+    ['names' => [
+        'index' => 'work.index',
+        'create' => 'work.create',
+        'store' => 'work.store',
+        'edit' => 'work.edit',
+        'update' => 'work.update',
+        'show' => 'work.show',
+        'destroy' => 'work.destroy'
+    ]]
+);
