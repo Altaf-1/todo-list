@@ -12,8 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+ 
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', 'WorkController@index');
+Route::get('/workindex', 'WorkController@index'); 
 
 Route::resource('/work','WorkController',
     ['names' => [
@@ -26,3 +30,5 @@ Route::resource('/work','WorkController',
         'destroy' => 'work.destroy'
     ]]
 );
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\work;
 
 class WorkController extends Controller
@@ -14,8 +15,11 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $tasks=work::all();
-        return view ('work.index',compact('tasks'));
+        //$tasks=work::all();
+        //return view ('work.index',compact('tasks'));
+
+        $tasks = DB::table('works')->get();
+        return view('work.index', compact('tasks'));
     }
 
     /**
@@ -61,8 +65,13 @@ class WorkController extends Controller
      */
     public function edit($id)                                                                                                                                                 
     {
-        $task=work::findOrFail($id);
+        //$task=work::findOrFail($id);
+        //return view ('work.edit',compact('task'));
+
+        $task=DB::table('works')->where('id',$id)->first();
+        //dd($task->get());
         return view ('work.edit',compact('task'));
+
     }
 
     /**
